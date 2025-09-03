@@ -332,7 +332,7 @@ class PortfolioAnimations {
         const form = document.getElementById('contactForm');
         if (!form) return;
 
-        const inputs = form.querySelectorAll('.form-control');
+        const inputs = form.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', function() {
                 this.parentElement.classList.add('focused');
@@ -349,7 +349,10 @@ class PortfolioAnimations {
             });
         });
 
-        // Form submission animation
+        // Skip submission handling for contact form as it has custom Web3Forms integration
+        if (form.id === 'contactForm') return;
+
+        // Form submission animation for other forms
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const submitBtn = form.querySelector('button[type="submit"]');
