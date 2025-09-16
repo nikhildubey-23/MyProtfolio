@@ -70,8 +70,7 @@
             <div class="col-lg-6">
                 <div class="contact-form animate-slide-up" style="animation-delay: 0.2s;">
                     <h2 class="section-subtitle">Send a Message</h2>
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="87d4bdcb-177c-4ec7-884e-afadc62763fc">
+                    <form id="contactForm" action="/send_contact" method="POST">
                         <input type="text" name="name" required placeholder="Your Name" class="form-control mb-3">
                         <input type="email" name="email" required placeholder="Your Email" class="form-control mb-3">
                         <textarea name="message" required placeholder="Your Message" rows="5" class="form-control mb-3"></textarea>
@@ -116,19 +115,5 @@
         </div>
     </div>
 </section>
-<script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var form = e.target;
-    var data = new FormData(form);
-    var submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    fetch(form.action, {
-        method: form.method,
-        body: data
-    });
-    window.location.reload();
-});
-</script>
+
 {% endblock %}
